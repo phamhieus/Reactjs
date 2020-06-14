@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Bai 3 - form pet</title>
+</head>
+
+<body>
+    <div class="media">
+        <div class="row">
+            <div class="col-5">
+                <div class="card image-card">
+                    <div class="card-header center-block">
+                        <img src="./images/img-footer-dog.png" class="img-inline" alt="dog footer image" />
+                        <span class="img-caption">PUPASSURE</span>
+                    </div>
+                    <div class="image-box">
+                        <img src="./images/img-dog.png" class="img-background" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="card form-card">
+                    <div class="card-header ml-auto">
+                        <h2>Yay, pupies! Ensure your</h2>
+                        <h2>pup gets the best care!</h2>
+                    </div>
+                    <div class="card-body ml-auto">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-control">
+                                    <div class="label">Name</div>
+                                    <input type="text" class="form-input" name="name" placeholder="Pet's name" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-control">
+                                    <div class="inputfile-block center-block">
+                                        <input type="file" name="file" id="file" class="inputfile" />
+                                        <img src="./images/img-photo.jpg" class="img-inline">
+                                        <label for="file">Upload a photo</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-control">
+                                    <div class="label">Bread</div>
+                                    <input type="text" class="form-input" name="bread" placeholder="Pet's bread" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-control">
+                                    <div class="label">Birthday</div>
+                                    <input type="text" class="form-input" name="birthday" placeholder="MM/DD/YYYY" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-control">
+                                    <div class="label">Gender</div>
+                                    <div class="toggle-switch center-block">
+                                        <input type="radio" name="Gender" id="Female" value="true" checked
+                                            class="toggle-input">
+                                        <label for="Female">Female</label>
+                                        <input type="radio" name="Gender" id="Male" value="false" class="toggle-input">
+                                        <label for="Male">Male</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-control">
+                                    <div class="label">Spayed of neuture</div>
+                                    <div class="toggle-switch center-block">
+                                        <input type="radio" name="Spayed" id="Spayed" value="true" checked
+                                            class="toggle-input">
+                                        <label for="Spayed">Spayed</label>
+                                        <input type="radio" name="Spayed" id="Neutured" value="false"
+                                            class="toggle-input">
+                                        <label for="Neutured">Neutured</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-control">
+                                    <div class="label">Weigth</div>
+                                    <div class="toggle-switch center-block">
+                                        <input type="radio" name="Weigth" id="0-25" value="true" checked
+                                            class="toggle-input">
+                                        <label for="0-25">0-25 Ibs</label>
+                                        <input type="radio" name="Weigth" id="25-50" value="true" class="toggle-input">
+                                        <label for="25-50">25-50 Ibs</label>
+                                        <input type="radio" name="Weigth" id="50-100" value="true" class="toggle-input">
+                                        <label for="50-100">50-100 Ibs</label>
+                                        <input type="radio" name="Weigth" id="100+" value="true" class="toggle-input">
+                                        <label for="100+">100+ Ibs</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white content-between">
+                        <button class="btn round violet btn-outline" type="button">Back</button>
+                        <button class="btn round dark-purple text-white bg-dark-purple" type="button">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
