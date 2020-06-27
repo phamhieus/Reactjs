@@ -15,3 +15,7 @@
     border: #5385c1;
     background-color: #5385c1;
 }
+
+.btn:hover{
+    background-color: #75a0d4;
+}

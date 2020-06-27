@@ -7,24 +7,44 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/grib.css">
     <link rel="stylesheet" href="./css/form-control.css">
+    <link rel="stylesheet" href="./css/lagre-screen.css">
+    <link rel="stylesheet" href="./css/medium-screen.css">
+    <link rel="stylesheet" href="./css/small-screen.css">
     <title>Theory - Template </title>
 </head>
 
 <body>
     <div class="header">
         <div class="menu">
-            <a class="logo">Theory</a>
+            <a href="/" class="logo">Theory</a>
             <ul class="nav">
                 <li>
-                    <a>Home</a>
+                    <a href="#">Home</a>
                 </li>
                 <li>
-                    <a>Generic</a>
+                    <a href="#">Generic</a>
                 </li>
                 <li>
-                    <a>Elements</a>
+                    <a href="#">Elements</a>
                 </li>
             </ul>
+            <a href="#" onclick="openMenuMobile(true)" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            <div id="nav-mobile">
+                <ul>
+                    <a href="">
+                        <li>Home</li>
+                    </a>
+                    <a href="">
+                        <li>Generic</li>
+                    </a>
+                    <a href="">
+                        <li>Elements</li>
+                    </a>
+                </ul>
+                <span class="close-menu" onclick="openMenuMobile(false)">
+                    <i class="fa fa-times"></i>
+                </span>
+            </div>
         </div>
     </div>
     <div class="banner">
@@ -34,7 +54,7 @@
     <!-- Content One -->
     <div class="content">
         <div class="row">
-            <div class="col-xl-4 col-md-12 col-sm-12">
+            <div class="col-lg-4 col-md-12 col-sm-12">
                 <div class="actitcle">
                     <p class="title-actitcle">Magna tempus sed amet</br> aliquam veroeros</p>
                     <p class="actitcle-discripton">Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna
@@ -45,7 +65,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-12 col-sm-12">
+            <div class="col-lg-4 col-md-12 col-sm-12">
                 <div class="actitcle">
                     <p class="title-actitcle">Interdum lorem pulvinar</br> adipiscing vitae</p>
                     <p class="actitcle-discripton">Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna
@@ -55,8 +75,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-12 col-sm-12">
-                <div class="actitcle no-border">
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="actitcle">
                     <p class="title-actitcle">Libero purus magna sapien</br> sed ullamcorper</p>
                     <p class="actitcle-discripton">Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna
                         a ullamcorper laoreet,
@@ -68,70 +88,70 @@
             </div>
         </div>
     </div>
-
-    <div class="row bg-blue">
-        <div class="col-12 row">
-            <p class="title col-12">Ipsum Feugiat</p>
-            <p class="discription col-12">Semper suscipit posuere apede</p>
-        </div>
-        <div class="col-12">
-            <div class="image-person">
-                <div class="row">
-                    <div class="col-xl-3 col-md-6 col-sm-6">
-                        <div class="image-box">
-                            <img src="./images/pic03.jpg" class="round" alt="Magna">
-                            <p class="image-title">Magna</p>
-                            <p class="image-discription">Cipdum dolor</p>
-                        </div>
+    <div class="bg-blue">
+        <div class="content">
+            <div class="content-header">
+                <h2 class="title">Ipsum Feugiat</h2>
+                <p class="discription">Semper suscipit posuere apede</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="image-box">
+                        <img src="./images/pic03.jpg" class="round" alt="Magna">
+                        <p class="image-title">Magna</p>
+                        <p class="image-discription">Cipdum dolor</p>
                     </div>
-                    <div class="col-xl-3 col-md-6 col-sm-6">
-                        <div class="image-box">
-                            <img src="./images/pic04.jpg" class="round" alt="Magna">
-                            <p class="image-title">Ipsum</p>
-                            <p class="image-discription">Vestibulum comm</p>
-                        </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="image-box">
+                        <img src="./images/pic04.jpg" class="round" alt="Magna">
+                        <p class="image-title">Ipsum</p>
+                        <p class="image-discription">Vestibulum comm</p>
                     </div>
-                    <div class="col-xl-3 col-md-6 col-sm-6">
-                        <div class="image-box">
-                            <img src="./images/pic05.jpg" class="round" alt="Magna">
-                            <p class="image-title">Tempus</p>
-                            <p class="image-discription">Fusce pellentes</p>
-                        </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="image-box">
+                        <img src="./images/pic05.jpg" class="round" alt="Magna">
+                        <p class="image-title">Tempus</p>
+                        <p class="image-discription">Fusce pellentes</p>
                     </div>
-                    <div class="col-xl-3 col-md-6 col-sm-6">
-                        <div class="image-box">
-                            <img src="./images/pic06.jpg" class="round" alt="Magna">
-                            <p class="image-title">Dolore</p>
-                            <p class="image-discription">Praesent placer</p>
-                        </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="image-box">
+                        <img src="./images/pic06.jpg" class="round" alt="Magna">
+                        <p class="image-title">Dolore</p>
+                        <p class="image-discription">Praesent placer</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="content ">
+    <div class="content">
+        <div class="content-header m-0">
+            <p class="title text-blue">Nunc Dignissim</p>
+            <p class="discription text-grey">Aliquam erat volutpat nam dui</p>
+        </div>
         <div class="row">
-            <div class="col-12 row blog">
-                <p class="title col-12 text-dark">Nunc Dignissim</p>
-                <p class="discription col-12 text-dark">Aliquam erat volutpat nam dui</p>
-            </div>
-
-            <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="no-border blog">
                     <img src="./images/pic01.jpg" class="image-blog" alt="">
                     <p class="title-blog">Praesent placerat magna</p>
-                    <p class="blog-discripton">Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor lorem ipsum.</p>
+                    <p class="blog-discripton">Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue,
+                        eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
+                        porttitor lorem ipsum.</p>
                     <div class="blog-footer">
                         <a href="#" class="btn bg-blue">More</a>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="no-border blog">
                     <img src="./images/pic02.jpg" class="image-blog" alt="">
                     <p class="title-blog">Fusce pellentesque tempus</p>
-                    <p class="blog-discripton">Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit. Pellentesque egestas sem. Suspendisse commodo ullamcorper magna non comodo sodales tempus</p>
+                    <p class="blog-discripton">Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis
+                        vel, euismod vel, velit. Pellentesque egestas sem. Suspendisse commodo ullamcorper magna non
+                        comodo sodales tempus</p>
                     <div class="blog-footer">
                         <a href="#" class="btn bg-blue">More</a>
                     </div>
@@ -144,18 +164,20 @@
         <div class="inner">
             <div class="flex">
                 <div class="copyright">
-                    &copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
+                    &copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a
+                        href="https://unsplash.com">Unsplash</a>.
                 </div>
                 <ul class="icons">
-                    <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                    <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                    <li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
-                    <li><a href="#" class="icon fa-pinterest-p"><span class="label">Pinterest</span></a></li>
-                    <li><a href="#" class="icon fa-vimeo"><span class="label">Vimeo</span></a></li>
+                    <li><a href="#" class="icon fa fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon fa fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon fa fa-linkedin"><span class="label">linkedIn</span></a></li>
+                    <li><a href="#" class="icon fa fa-pinterest-p"><span class="label">Pinterest</span></a></li>
+                    <li><a href="#" class="icon fa fa-vimeo"><span class="label">Vimeo</span></a></li>
                 </ul>
             </div>
         </div>
     </footer>
-</body>
 
+    <script src="./js/main.js"></script>
+</body>
 </html>
