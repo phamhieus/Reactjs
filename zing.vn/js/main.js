@@ -27,6 +27,7 @@ function main(){
     arrArticle.forEach(article => {
         news.push(getArticle(article));
     });
+    
     printArrNews(news);
 }
 
