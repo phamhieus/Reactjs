@@ -1,0 +1,10 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    width: 100%;
+}
+.row [class^="col-"] {
+    display: flex;
+    min-height: 40px;
+}
