@@ -85,6 +85,10 @@ ul.nav li a {
     z-index: 10003;
     color: white;
 }
+ul.nav li a:hover, ul.nav li:hover{
+    color: rgba(255, 255, 255, 1);
+}
+
 
 .content {
     width: 80%;
