@@ -1,0 +1,26 @@
+.table {
+    margin: 1em;
+    border-collapse: collapse;
+}
+.table>tbody {
+    text-align: left;
+}
+.table, td, tr, th {
+    border: 1px solid black;
+    padding: 2px;
+}
+input,
+select,
+textarea {
+    margin: 5px;
+}
+button {
+    margin-left: 1em;
+}
+.table-header {
+    padding: 10px;
+    text-align: center;
+}
+h1 {
+    background: green;
+}
