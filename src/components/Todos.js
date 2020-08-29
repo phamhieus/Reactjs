@@ -2,9 +2,6 @@ import React from 'react';
 import TodoItem from './TodoItem';
 
 class Todos extends React.Component {
-    handleCheckboxChange(){
-        console.log('click')
-    }
     render() {
         return (
             <div className='container'>
@@ -13,7 +10,7 @@ class Todos extends React.Component {
                         <TodoItem 
                             key={todo.id} 
                             todo={todo}
-                            handleChange={this.handleCheckboxChange}
+                            handleChange={this.props.handleCheckboxChange}
                         />
                     ))}
                 </ul>

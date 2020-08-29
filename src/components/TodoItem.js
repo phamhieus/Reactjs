@@ -2,14 +2,18 @@ import React from 'react';
 
 class TodoItem extends React.Component {
     render() {
+        const {completed, id, title} = this.props.todo
         return (
-            <li className='todo-item'>
+            <li className="todo-item">
                 <input
-                    type='checkbox'
-                    checked={this.props.todo.completed}
-                    onChange={this.props.handleChange}
+                    type="checkbox"
+                    checked={completed}
+                    onChange={()=>this.props.handleChange(id)}
                 />
-                {this.props.todo.title}
+                <span className={completed?'completed':''}>
+                    {title}
+                </span>
+                <button type="button" className="btn-style">X</button>
             </li>
         )
     }
