@@ -11,6 +11,7 @@ class Todos extends React.Component {
                             key={todo.id} 
                             todo={todo}
                             handleChange={this.props.handleCheckboxChange}
+                            deleteTodo={this.props.deleteTodo}
                         />
                     ))}
                 </ul>

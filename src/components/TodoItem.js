@@ -13,7 +13,7 @@ class TodoItem extends React.Component {
                 <span className={completed?'completed':''}>
                     {title}
                 </span>
-                <button type="button" className="btn-style">X</button>
+                <button type="button" className="btn-style" onClick={()=>this.props.deleteTodo(id)}>X</button>
             </li>
         )
     }
