@@ -1,5 +1,5 @@
-import React from 'react';
-import TodoItem from './TodoItem';
+import React from 'react'
+import TodoItem from './TodoItem'
 
 class Todos extends React.Component {
     render() {
@@ -7,17 +7,17 @@ class Todos extends React.Component {
             <div className='container'>
                 <ul>
                     {this.props.todos.map(todo => (
-                        <TodoItem 
-                            key={todo.id} 
+                        <TodoItem
+                            key={todo.id}
                             todo={todo}
-                            handleChange={this.props.handleCheckboxChange}
+                            handleChange={this.props.handleChange}
                             deleteTodo={this.props.deleteTodo}
                         />
                     ))}
                 </ul>
             </div>
-        );
+        )
     }
 }
 
-export default Todos;
+export default Todos
