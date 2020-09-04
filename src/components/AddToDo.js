@@ -10,7 +10,7 @@ function AddTodo(props) {
 
     const addToDo = (event) => {
         event.preventDefault()
-        this.props.addTodo(title)
+        props.addTodo(title)
         setTitle('')
     }
 

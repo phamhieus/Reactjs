@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from './layout/Header';
+import Footer from './layout/Footer';
 import Todos from './Todos';
 import AddTodo from './AddTodo'
 import axios from 'axios'
@@ -64,6 +65,7 @@ function TodoApp() {
             <Todos todos={state.todos}
                 handleChange={handleCheckboxChange}
                 deleteTodo={deleteTodo} />
+            <Footer/>
         </div>
     );
 
