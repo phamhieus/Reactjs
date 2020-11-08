@@ -166,7 +166,6 @@ window.onload = () => {
         appendUl(item, li, levelMenu)
       }
 
-
       parrent.appendChild(li)
     }
 
@@ -176,6 +175,7 @@ window.onload = () => {
       ul.className = 'child'
       li.className = 'parent'
 
+      //Neu khong phai menu cap dau tien thi them >> sau the li
       if (levelMenu > 0) {
         appendSpan(li)
       }
