@@ -1,94 +1,72 @@
-/*
- Bai 1, So sanh 2 array
-*/
+window.onload = () => {
 
-const arr2 = [1, 2, 3, 4]
-const arr3 = [1, 2, 3, 5]
-const arr4 = [1, 2, 3, 4, 5]
+  /*
+    Bai 1
+  */
 
-const compareArray = (array1, array2) => JSON.stringify(array1) === JSON.stringify(array2)
+  const btnSum = document.getElementById('btn-sum')
 
-/*
- Bai 2, Sắp xếp lại mảng
-*/
+  btnSum.addEventListener('click', function () {
+    const firstNum = document.getElementById('first-number').value
+    const secondNum = document.getElementById('second-number').value
+    const resultElement = document.getElementById('result-sum')
 
-// const data = [1, 2, [3, 4, [5]]]
+    const result = Number(firstNum) + Number(secondNum)
 
-const flatten = (array) => {
-  const newArray = JSON.parse(JSON.stringify(array))
+    resultElement.innerHTML = "Tong: " + result
+  })
 
-  return newArray.reduce(function (flat, toFlatten) {
-    return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten)
-  }, [])
-}
+  /*
+   Bai 2
+ */
 
-/*
- Bai 3
-*/
+  const divBox = document.getElementById('box')
 
-const data = [1, 2, 3, 4, 5, 6, 7];
+  divBox.addEventListener('click', function () {
+    const { style } = divBox
+    const { background } = style
 
-const chunkArray = (arr, size) => {
-  const chunkedArray = [];
+    style.background = background == 'red' ? 'green' : 'red'
+  })
 
-  for (let i = 0; i < arr.length; i += size) {
-    chunkedArray.push(arr.slice(i, i + size))
-  }
+  /*
+    Bai 3
+  */
 
-  return chunkedArray
-}
+  const selProductTyle = document.getElementById('sel-productType')
 
-/*
- Bai 4
-*/
+  selProductTyle.addEventListener('change', function () {
+    const productTyle = selProductTyle.value
 
-function intersection() {
-  const argsContainArray = (arguments) => {
-    for (var i = 0; i < arguments.length; i++) {
-      if (!Array.isArray(arguments[i])) {
-        return false
-      }
+    const ulLaptop = document.getElementById('ul-laptop')
+    const ulPhone = document.getElementById('ul-phone')
+    const ulTV = document.getElementById('ul-tv')
+
+    hideProductUls([ulLaptop, ulPhone, ulTV])
+
+    switch (productTyle) {
+      case 'laptop':
+        showProductUl(ulLaptop)
+        break
+      case 'phone':
+        showProductUl(ulPhone)
+        break
+      case 'television':
+        showProductUl(ulTV)
+        break
     }
+  })
 
-    return true
-  }
-
-  const getDuplicateElements = (arr1, arr2) => {
-    return arr1.filter(function (val) {
-      return arr2.indexOf(val) != -1;
+  function hideProductUls(uls) {
+    uls.forEach(ul => {
+      ul.style.display = 'none'
     });
   }
 
-  if (!arguments || arguments.length < 2 || !argsContainArray(arguments)) return
-
-  let duplicateItems = arguments[0]
-
-  for (var i = 1; i < arguments.length; i++) {
-    duplicateItems = getDuplicateElements(duplicateItems, arguments[i])
+  function showProductUl(ul) {
+    ul.style.display = 'block'
   }
 
-  return duplicateItems
-}
-
-/*
- Bai 5
-*/
-
-const checkExpiredDate = (orders) => {
-  const expirationDate = '30 OCt 2020 12:20:32';
-  return Date.parse(orders) <= Date.parse(expirationDate)
-}
-
-/*
-  Bai 6
-*/
-
-const validateEmail = email => {
-  const regexEmail = /^[a-z0-9]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z](?:[a-z]*[a-z])?\.)+[a-z](?:[a-z]*[a-z])?$/g
-  return regexEmail.test(email)
-}
-
-const validateUserName = userName => {
-  const regexUserName = /^((?!__))([a-z1-9_]){2,10}$/g
-  return regexUserName.test(userName)
+  const event = new Event('change')
+  selProductTyle.dispatchEvent(event);
 }
