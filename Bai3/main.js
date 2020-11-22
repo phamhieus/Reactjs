@@ -13,6 +13,7 @@ let Lesson15 = function () {
     { id: 11, name: 'Eevee', hp: 55, atk: 55 },
     { id: 12, name: 'Jigglypuff', hp: 115, atk: 45 }
   ]
+  let pokemonSelecteds = []
 
   const PokeGame = function () {
     const updateProcessBar = (idElement, number) => {
@@ -79,6 +80,7 @@ let Lesson15 = function () {
         li.className = 'col-3'
         li.value = poke.id
         li.addEventListener('click', liClickEvent)
+        li.id = `li${poke.id}`
 
         li.appendChild(img)
         ul.appendChild(li)
@@ -103,24 +105,83 @@ let Lesson15 = function () {
       })
     }
 
-    //   <div class="box-select">
-    //   <span class="icon-close"
-    //     onclick="closePokemon(${pokemonSelect.id})">
-    //       <i class="fas fa-times"></i>
-    //   </span>
-    //   <img src="./img/${pokemonSelect.name.toLowerCase()}.png"
-    //   alt="" id-data="${pokemonSelect.id}"
-    //   class="pokemon-select_img">
-    // </div>`
+    const appendPokeSelected = (pokemonSelecteds) => {
+      let index = 0
+      const selectedElements = document.getElementsByClassName('pokemon-select-item')
+
+      for (let i = 0; i < selectedElements.length; i++) {
+        selectedElements[i].innerHTML = ''
+      }
+
+      pokemonSelecteds.forEach(poke => {
+        selectedElements[index].innerHTML = `<div class="box-select">
+              <span class="icon-close" id="span${poke.id}">
+                <i class="fas fa-times" id="i${poke.id}"></i>
+              </span>
+              <img src="./pokemon/${poke.name.toLowerCase()}.png" alt="${poke.name}" id-data="${poke.id}" class="pokemon-select-img">
+            </div>`
+
+        index++
+      })
+
+      addDeleteEvent()
+    }
+
+    const removePokemon = (event) => {
+      const pokeId = Number(event.target.id.replace("sp", "").replace("i", ""))
+      pokemonSelecteds = pokemonSelecteds.filter(p => p.id != pokeId)
+      appendPokeSelected(pokemonSelecteds)
+      updateLiStatus(pokeId, true)
+    }
+
+    const updateLiStatus = (id, enable) => {
+      const li = document.getElementById(`li${id}`)
+
+      if (!enable) {
+        li.classList.add('disable')
+      } else {
+        li.classList.remove('disable')
+      }
+    }
+
+    const isLiEnable = (id) => {
+      const li = document.getElementById(`li${id}`)
+      return li.classList.contains('disable')
+    }
 
     const addPokemon = (event) => {
+      const id = Number(event.target.value)
+      const poke = pokemons.find(p => p.id === id)
 
+      if (pokemonSelecteds.length < 5) {
+        if (!isLiEnable(id)) {
+          pokemonSelecteds.push(poke)
+          appendPokeSelected(pokemonSelecteds)
+          updateLiStatus(id, false)
+        }
+      } else {
+        const alertMax = document.getElementById('pMaxSelAlert')
+        alertMax.style.display = 'block'
+
+        alert('You have selected 5 pokemon')
+      }
+    }
+
+    function addDeleteEvent() {
+      const deleteIcons = document.getElementsByClassName('icon-close')
+
+      if (deleteIcons) {
+        for (let i = 0; i < deleteIcons.length; i++) {
+          deleteIcons[i].addEventListener('click', removePokemon)
+        }
+      }
     }
 
     const ul = document.getElementById('ulPokeImgs')
-    const headerContent = document.getElementById('header-content')
     const btnAddPoke = document.getElementById('btn-add-pokemon')
+    const fixTitleSelect = e => e.target.setAttribute('contentEditable', 'true')
 
+    document.querySelector('.heading-box-select').addEventListener('dblclick', fixTitleSelect)
     btnAddPoke.addEventListener('click', addPokemon)
     renderListPokemon(pokemons, ul)
   }
@@ -135,4 +196,3 @@ let Lesson15 = function () {
 document.addEventListener('DOMContentLoaded', function () {
   Lesson15.init()
 })
-
