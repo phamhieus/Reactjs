@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300|Shadows+Into+Light');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Shadows Into Light';
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+li:hover {
+  border: 1px solid #FECEDF
+}
+
+li.selected {
+  border: 2px solid #FECEDF
+}
+
+.icon-close {
+  position: absolute;
+  top: -4px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  border-radius: 50%;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.icon-close:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+div.poke-ìnfo{
+  background: #f8f8f8;
+}
+
+
+/* ------------------------------------------------------ */
+.pokemon-select {
+  background: linear-gradient(to bottom, #35ac5d, #60ae97);
+  margin-top: 50px;
+  padding: 30px;
+  text-align: center;
+}
+.heading_box-select {
+  padding: 10px 15px;
+  margin: 30px 0;
+  font-size: 25px;
+  color: #fff;
+  font-weight: 300;
+  outline: none;
+  display: inline-block;
+}
+.pokemon-select_list {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+.pokemon-select_item {
+  list-style: none;
+  margin: 0 30px;
+  background: #3f8b65;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+.pokemon-select_img {
+  width: 100px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.pokemon-select_item:hover .pokemon-select_img {
+  transform: scale(0.8);
+}
+.icon-close {
+  position: absolute;
+  top: -4px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  background: rgba(0,0,0,0.2);
+  display: inline-block;
+  border-radius: 50%;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+.icon-close:hover {
+  background: rgba(0,0,0,0.5);
+}
+.messeage-full-select {
+  display: none;
+  font-size: 14px;
+  color: red;
+}

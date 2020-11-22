@@ -1,227 +1,299 @@
+const Lesson15 = function () {
+  let users = [{
+    Id: 1,
+    FullName: 'Nguyễn Văn Nam',
+    Gender: 'Nữ',
+    Age: 12
+  },
+  {
+    Id: 2,
+    FullName: 'Nguyễn Văn Nữ',
+    Gender: 'Nam',
+    Age: 12
+  },
+  {
+    Id: 3,
+    FullName: 'Nguyễn Văn Test',
+    Gender: 'Nữ',
+    Age: 12
+  }]
 
+  const appendButton = (className, textContent, user, td, event) => {
+    const button = document.createElement('button')
 
-let Lesson14 = function () {
-  let ShallowMenu = function () {
-    const shallowMenu = [
-      {
-        title: 'Dashboard',
-        link: '/dashboard',
-        children: [
-          {
-            title: 'Tool',
-            link: '/dashboard/tool'
-          },
-          {
-            title: 'Reports',
-            link: '/dashboard/reports'
-          },
-          {
-            title: 'Analytics',
-            link: '/dashboard/analytics'
-          },
-          {
-            title: 'Code Blocks',
-            link: '/dashboard/code-blocks'
-          },
-        ]
-      },
-      {
-        title: 'Sales',
-        link: '/sales',
-        children: [
-          {
-            title: 'New Sales',
-            link: '/sales/new-sales'
-          },
-          {
-            title: 'Expired Sales',
-            link: '/sales/expired-sales'
-          },
-          {
-            title: 'Sales Reports',
-            link: '/sales/sales-reports'
-          },
-          {
-            title: 'Deliveries',
-            link: '/sales/deliveries'
-          },
-        ]
-      },
-      {
-        title: 'Messages',
-        link: '/messages',
-        children: [
-          {
-            title: 'Inbox',
-            link: '/messages/inbox'
-          },
-          {
-            title: 'Outbox',
-            link: '/messages/outbox'
-          },
-          {
-            title: 'Sent',
-            link: '/messages/sent'
-          },
-          {
-            title: 'Archived',
-            link: '/messages/archived'
-          },
-        ]
-      },
-      {
-        title: 'Users',
-        link: '/users',
-        children: [
-          {
-            title: 'New User',
-            link: '/users/new-user'
-          },
-          {
-            title: 'User Groups',
-            link: '/users/user-groups'
-          },
-          {
-            title: 'Permissions',
-            link: '/users/permissions'
-          },
-          {
-            title: 'passwords',
-            link: '/users/passwords'
-          },
-        ]
-      },
-      {
-        title: 'Settings',
-        link: '/settings',
-        children: [
-          {
-            title: 'Databases',
-            link: '/settings/databases'
-          },
-          {
-            title: 'Design',
-            link: '/settings/design'
-          },
-          {
-            title: 'Change User',
-            link: '/settings/change-user'
-          },
-          {
-            title: 'Log Out',
-            link: '/settings/log-out'
-          },
-        ]
-      },
-    ]
+    button.type = 'button'
+    button.className = className
+    button.textContent = textContent
+    button.value = user ? user.Id : null
 
-    const iconShallow = {
-      Dashboard: "fas fa-tachometer-alt",
-      Sales: "fas fa-truck-moving",
-      Messages: "fas fa-envelope",
-      Users: "fas fa-user-friends",
-      Settings: "fas fa-cog"
+    if (event) button.addEventListener('click', event)
+
+    td.appendChild(button)
+  }
+
+  const _TableUser = function () {
+    const tableBody = document.getElementById('tableBody')
+
+    const appendTdCheckBox = (user, tr) => {
+      const tdCheckBox = document.createElement('td')
+      const checkBox = document.createElement('input')
+
+      checkBox.type = 'checkBox'
+      checkBox.value = user ? user.Id : null
+
+      tdCheckBox.appendChild(checkBox)
+      tr.appendChild(tdCheckBox)
     }
 
-    const shallowElement = document.getElementById('shallow')
+    const appendTdAction = (user, tr) => {
+      const tdAction = document.createElement('td')
 
-    const renderMenu = (shallowMenu = [], parrent) => {
+      appendButton('btn btn-primary btnEdit', 'Edit', user, tdAction)
+      appendButton('btn btn-danger btnDelete', 'Delete', user, tdAction)
 
-      const appendIcon = (a) => {
-        const span = document.createElement('span')
+      tr.appendChild(tdAction)
+    }
 
-        span.className = 'fas fa-chevron-right btn-show-sub-menu'
-        a.className = 'nav-item'
+    const appendTdUserProperty = (user, tr) => {
+      for (let key in user) {
+        if (user.hasOwnProperty(key)) {
+          const td = document.createElement('td')
+          const value = user[key]
 
-        a.appendChild(span)
+          td.innerHTML = value
+
+          tr.appendChild(td)
+        }
       }
+    }
 
-      const setIconForLi = (item, a) => {
-        const icon = document.createElement('i')
+    const renderTable = (users = [], tableBody) => {
+      tableBody.innerHTML = ''
 
-        switch (item.title) {
-          case 'Dashboard':
-            icon.className = iconShallow.Dashboard
-            break;
-          case 'Sales':
-            icon.className = iconShallow.Sales
-            break;
-          case 'Messages':
-            icon.className = iconShallow.Messages
-            break;
-          case 'Users':
-            icon.className = iconShallow.Users
-            break;
-          case 'Settings':
-            icon.className = iconShallow.Settings
-            break;
+      users.forEach(user => {
+        const tr = document.createElement('tr')
+
+        appendTdCheckBox(user, tr)
+        appendTdUserProperty(user, tr)
+        appendTdAction(user, tr)
+
+        tableBody.appendChild(tr)
+      })
+    }
+
+    renderTable(users, tableBody)
+  }
+
+  const _EditUserTable = function () {
+    let tempTrs = []
+
+    const btnCanleEvent = (event) => {
+      const id = Number(event.target.value)
+      const tr = event.target.parentElement.parentElement
+      const tempTr = tempTrs.find(item => item.id === id)
+      const { element } = tempTr
+
+      tr.innerHTML = element
+
+      tempTrs.remove(tempTr)
+      addEditEvent()
+    }
+
+    const btnSaveEvent = (event) => {
+      const id = Number(event.target.value)
+      const tr = event.target.parentElement.parentElement
+      const textBoxs = tr.getElementsByTagName("input")
+      const select = tr.getElementsByTagName("select")[0]
+
+      let user = users.find(u => u.Id === id)
+
+      if (!user) {
+        user = {
+          Id: id,
+          FullName: '',
+          Age: 0
         }
 
-        a.appendChild(icon)
+        users.push(user)
       }
 
-      const initMenu = (items, parrent) => {
-        const ul = document.createElement('ul')
+      user.Gender = select.value
 
-        items.forEach(item => {
-          const li = document.createElement('li')
-          const a = document.createElement('a')
-          const text = document.createTextNode(item.title)
+      for (let i = 0; i < textBoxs.length; i++) {
+        const { name, value } = textBoxs[i]
 
-          setIconForLi(item, a)
-          a.appendChild(text)
-          a.href = item.link
-
-          if (item.children) {
-            appendIcon(a)
-            li.appendChild(a)
-
-            initMenu(item.children, li)
-          } else {
-            li.appendChild(a)
-          }
-
-          ul.appendChild(li)
-        })
-
-        parrent.appendChild(ul)
-      }
-
-      const eventShowMenu = (e) => {
-        const a = e.target
-        const li = a.parentElement
-        const ul = li.getElementsByTagName("ul")[0]
-        const span = a.getElementsByTagName('span')[0]
-
-        e.preventDefault()
-        ul.classList.toggle('show')
-        span.classList.toggle('rotate')
-      }
-
-      const clickShowMenuEvent = () => {
-        const arrA = document.getElementsByClassName('nav-item')
-
-        for (let i = 0; i < arrA.length; i++) {
-          arrA[i].addEventListener('click', eventShowMenu)
+        if (user.hasOwnProperty(name)) {
+          user[name] = value
         }
       }
 
-      initMenu(shallowMenu, parrent)
-      clickShowMenuEvent()
+      _TableUser()
+      addEditEvent()
     }
 
-    renderMenu(shallowMenu, shallowElement)
+    const btnDeteletEvent = (event) => {
+      const id = Number(event.target.value)
 
+      users = users.filter(u => u.Id != id)
+
+      _TableUser()
+      addEditEvent()
+    }
+
+    const btnDeteletMany = (event) => {
+      const checkBoxIds = document.querySelectorAll('input[type="checkBox"]:checked')
+      const userIds = []
+
+      if (checkBoxIds) {
+        for (let i = 0; i < checkBoxIds.length; i++) {
+          userIds.push(Number(checkBoxIds[i].value))
+        }
+
+        users = users.filter(u => !userIds.includes(u.Id))
+
+        _TableUser()
+        addEditEvent()
+      }
+    }
+
+    const appendTdCheckBox = (user, tr) => {
+      const tdCheckBox = document.createElement('td')
+      const checkBox = document.createElement('input')
+
+      checkBox.checked = true
+      checkBox.type = 'checkBox'
+      checkBox.value = user ? user.Id : null
+
+      tdCheckBox.appendChild(checkBox)
+      tr.appendChild(tdCheckBox)
+    }
+
+    const createTextBox = (value, name, type) => {
+      const txt = document.createElement('input')
+      const td = document.createElement('td')
+
+      txt.type = type
+      txt.value = value
+      txt.name = name
+
+      td.appendChild(txt)
+
+      return td
+    }
+
+    const createSelect = (value, name, options) => {
+      const select = document.createElement('select')
+      const td = document.createElement('td')
+
+      select.name = name
+
+      options.forEach(option => {
+        const optionElement = document.createElement('option')
+
+        optionElement.value = option
+        optionElement.textContent = option
+
+        if (value === option) {
+          optionElement.selected = true
+        }
+
+        select.appendChild(optionElement)
+      })
+
+      td.appendChild(select)
+
+      return td
+    }
+
+    const appendTdEditedUserProperty = (user, tr) => {
+      const tdId = document.createElement('td')
+
+      tdId.innerText = user.Id
+
+      tr.appendChild(tdId)
+      tr.appendChild(createTextBox(user ? user.FullName : null, 'FullName', 'text'))
+      tr.appendChild(createSelect(user ? user.Gender : null, "Gender", ["Nam", "Nữ"]))
+      tr.appendChild(createTextBox(user ? user.Age : null, 'Age', 'number'))
+    }
+
+    const appendTdEditedAction = (user, tr) => {
+      const tdAction = document.createElement('td')
+
+      appendButton('btn btn-success', 'Save', user, tdAction, btnSaveEvent)
+      appendButton('btn btn-warning', 'Cancle', user, tdAction, btnCanleEvent)
+
+      if (user) appendButton('btn btn-danger', 'Delete', user, tdAction, btnDeteletEvent)
+
+      tr.appendChild(tdAction)
+    }
+
+    const appendRowEdit = (user = {}, tr) => {
+      appendTdCheckBox(user, tr)
+      appendTdEditedUserProperty(user, tr)
+      appendTdEditedAction(user, tr)
+    }
+
+
+    const btnAddEvent = (event) => {
+      const id = users[users.length - 1].Id + 1
+      const user = { Id: id, FullName: '', Age: 0 }
+      const tr = document.createElement("tr")
+      const tableBody = document.getElementById('tableBody')
+
+      tempTrs.push({ id, element: tr.innerHTML })
+      tr.innerHTML = ''
+
+      appendRowEdit(user, tr)
+      tableBody.appendChild(tr)
+    }
+
+
+    const btnEditEvent = (event) => {
+      const id = Number(event.target.value)
+      const user = users.find(u => u.Id === id)
+      const tr = event.target.parentElement.parentElement
+
+      tempTrs.push({ id, element: tr.innerHTML })
+      tr.innerHTML = ''
+
+      appendRowEdit(user, tr)
+    }
+
+    function addEditEvent() {
+      const btnEdits = document.getElementsByClassName('btnEdit')
+      const btnDeletes = document.getElementsByClassName('btnDelete')
+
+
+      for (let i = 0; i < btnEdits.length; i++) {
+        btnEdits[i].removeEventListener('click', btnEditEvent)
+        btnEdits[i].addEventListener('click', btnEditEvent)
+
+        btnDeletes[i].removeEventListener('click', btnDeteletEvent)
+        btnDeletes[i].addEventListener('click', btnDeteletEvent)
+      }
+    }
+
+    function addDeleteManyNAdd() {
+      const btnAdd = document.getElementById('btnAdd')
+      const btnDeleteMany = document.getElementById('btnDeleteMany')
+
+      btnAdd.addEventListener('click', btnAddEvent)
+      btnDeleteMany.addEventListener('click', btnDeteletMany)
+    }
+
+    addEditEvent()
+    addDeleteManyNAdd()
   }
 
   return {
     init: function () {
-      ShallowMenu()
+      _TableUser()
+      _EditUserTable()
     }
   }
 }()
 
 document.addEventListener('DOMContentLoaded', function () {
-  Lesson14.init()
+  Lesson15.init()
 })
 
