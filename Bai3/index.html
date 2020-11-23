@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Somehow I got an error, so I comment the title, just uncomment to show -->
+    <!-- <title>Sidebar Menu with sub-menu | CodingNepal</title> -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.0/css/pro.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <p class="text-center mt-2">Choose your pokemon</p>
+        <div class="row">
+            <div class="col-8">
+                <lu class="row" id="ulPokeImgs">
+                </lu>
+            </div>
+            <div class="col-4">
+                <div class="card w-80 mr-auto poke-ìnfo">
+                    <img class="card-img-top mt-2 mb-2 mx-auto d-block" id="thumbnail-selected-pokemon"
+                        style="width: 10em !important;" src="" alt="Poke">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" id="name-selected-pokemon"></h5>
+                        <div class="progress">
+                            Hp <span class="mr-1 ml-1" id='hp'></span>
+                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75"
+                                aria-valuemin="0" aria-valuemax="200" id="pbHp"></div>
+                        </div>
+                        <div class="progress mt-2">
+                            Atk <span class="mr-1 ml-1" id='atk'></span>
+                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75"
+                                aria-valuemin="0" aria-valuemax="200" id="pbAtk"></div>
+                        </div>
+                        <div class=" text-center mt-5">
+                            <button type="button" class="btn btn-success" id="btn-add-pokemon">Add</button>
+                            <p class="text-danger mt-2" id="pMaxSelAlert" style='display: none;'>You have selected 5
+                                pokemon
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 text-white text-center">
+                <div class="pokemon-select">
+                    <h2 class="heading-box-select">Cereal killer</h2>
+                    <ul class="pokemon-select-list">
+                        <li class="pokemon-select-item">
+                        </li>
+                        <li class="pokemon-select-item">
+                        </li>
+                        <li class="pokemon-select-item">
+                        </li>
+                        <li class="pokemon-select-item">
+                        </li>
+                        <li class="pokemon-select-item">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
