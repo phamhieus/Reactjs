@@ -1,48 +1,35 @@
-import './App.css';
-import React, {useState} from 'react';
-import { createStore } from 'redux';
+import './App.css'
+import React from 'react'
 
-const initState = {
-  value: 0
-}
+import store from './store'
+import { Provider } from 'react-redux'
 
-function counterReducer(state=initState, action) {
-  switch (action.type) {
-    case "counter/incremented":
-      state.value = state.value + 1;
-      break;
-    case "counter/decremented":
-      state.value = state.value - 1;
-      break;
-  }
-
-  return state;
-}
+import Header from './components/Header'
+import TodoList from './components/TodoList'
+import Footer from './components/Footer'
 
 function App() {
-  const [state, setState] = useState(initState);
-
-  const store = createStore(counterReducer);
-
-  const render = () => {
-    const data = store.getState()
-    console.log({data})
-    state.value = data.value
-  }
-
-  store.subscribe(render);
-
   return (
-    <div>
-      <p>
-        Clicked: <span id="value">{state.value}</span> times
-        <button id="increment" onClick={e=> store.dispatch({ type: "counter/incremented" })}>+</button>
-        <button id="decrement" onClick={e=> store.dispatch({ type: "counter/decremented" })}>-</button>
-        <button id="incrementIfOdd">Increment if odd</button>
-        <button id="incrementAsync">Increment async</button>
-      </p>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <nav>
+          <section>
+            <h1>To do app</h1>
+          </section>
+        </nav>
+        <main>
+          <section className="medium-container">
+            <h2>Todos</h2>
+            <div className="todoapp">
+              <Header />
+              <TodoList />
+              <Footer />
+            </div>
+          </section>
+        </main>
+      </div>
+    </Provider>
   );
 }
 
-export default App;
+export default App
